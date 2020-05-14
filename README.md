@@ -25,7 +25,7 @@ A stage represents matches played in a single week of season by all the teams in
 
 The dataset used in this project comes from the Kaggle's European Soccer Database as you can see below image which lists all the tables. But it is sqllite database, so for convenience I converted the dataset to csv of respective table and uploaded it to S3 as shown in the second image.
 ![assets/dataset](assets/dataset.png)
-![assets/dataset_s3](assets/dataset_s3.png)
+
 
 This dataset includes the following:
 1. +25,000 matches
