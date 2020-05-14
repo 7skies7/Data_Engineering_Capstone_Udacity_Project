@@ -37,3 +37,46 @@ This dataset includes the following:
 7. Betting odds from up to 10 providers
 8. Detailed match events (goal types, possession, corner, cross, fouls, cards etc…) for +10,000 matches
 
+
+### Step 3: Define the Data Model
+#### 3.1 Conceptual Data Model
+The Data Model which we used to model the data in our Data Warehouse will be the star schema. After analysing the data we can come to the conclusion that we will map our data model as follows
+1. Country -> Dimensions Table
+2. League -> Dimensions Table
+3. Team -> Dimensions Table
+4. Team_attributes -> Dimensions Table
+5. Player -> Dimensions Table
+6. Player_attributes -> Dimensions Table
+7. Match -> Fact Table
+
+After staging our data from S3 to Amazon Redshift, we will transform our Match table to Points table. 
+8. Points -> Points Table
+
+Our *Points* table will have following columns.
+1. league_id int4,
+2. league_name TEXT,
+3. season TEXT,
+4. table_position int4,
+5. team_name_stats TEXT,
+6. W int4,
+7. D int4,
+8. L int4,
+9. GF int4,
+10. GA int4,
+11. GD int4,
+12. cum_points NUMERIC 
+
+
+#### 3.2 Mapping Out Data Pipelines
+
+We will be using Apache Airflow for Data Pipeline. Airflow will help us map out each and every steps and create a pipeline whenever necessary.
+Our Data Pipeline will have the following DAG's as shown in the below image.
+
+![assets/data-pipeline_soccer](assets/data_pipeline_soccer.png)
+
+
+### Run Pipelines to Model the Data 
+#### 4.1 Create the data model
+Our DAG (udacity_capstone_soccer.dag)  consist of 13 tasks, each of tasks working is given below.
+
+**DAG Creation**: First we create our DAG using the following the params and DAG class.

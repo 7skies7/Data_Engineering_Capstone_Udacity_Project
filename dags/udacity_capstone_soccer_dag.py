@@ -46,7 +46,7 @@ def get_match_outcome(home_team, away_team, home_goal, away_goal, target):
 
 def transform_match():    
         
-    connstr = 'redshift+psycopg2://soccer_admin:Soccerpwd7@redshift-cluster-1.cimcpv5pkll7.us-west-2.redshift.amazonaws.com:5439/soccer'
+    connstr = 'redshift+psycopg2://username:password@hostname:port/database'
 
     engine = create_engine(connstr) 
     print("Connection Established")
